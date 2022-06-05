@@ -1,0 +1,123 @@
+:root{
+--color1: pink;
+--color2: #eff9da;
+--color3: hsl(349, 52%, 79%);
+--color4: hsl(78, 30%, 73%);
+}
+
+html{
+    font-size: 16px;
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#displayContainer{
+    height: 6rem;
+    width: 19.6rem;
+    background-color: var(--color2);
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+    #mainDisplay{
+        font-size: 3rem;
+        margin-right: .6rem;
+    }
+    #secondaryDisplay{
+        margin-right: .6rem;
+        padding: .3rem;
+        font-size: 1rem;
+        width: fit-content;
+        color: black;
+        background-color: var(--color1);
+    }
+    #secondaryDisplay:empty {
+        display: none;
+     }
+
+#buttonsContainer{
+    width: 20rem;
+    height: 25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 3px;
+}
+    button{
+        font-size: 2rem;
+        color: black;
+        border: 3px solid var(--color3);
+        border-radius: 1px;
+    }
+    button[value="+"]{
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 4;
+    }
+    button[value="="]{
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 4;
+        grid-row-end: 6;
+    }
+    button[value="0"]{
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    button[data-button-type="number"]{
+        background-color: var(--color1);
+    }
+    button[data-button-type="operator"],button[data-button-type="equal"]{
+        background-color: var(--color2);
+        border: 3px solid var(--color4);
+    }
+    button[data-button-type="delete"]{
+        width: 100%;
+        height: 48%;
+        background-color: var(--color2);
+        border: 3px solid var(--color4);
+        font-size: 1rem;
+        margin: 0;
+    }
+    button[data-button-type="clear"]{
+        width: 100%;
+        height: 48%;
+        background-color: var(--color2);
+        border: 3px solid var(--color4);
+        font-size: 1rem;
+    }
+    #deleteButtons{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    button:active{
+        filter: brightness(110%)
+    }
+
+    a{
+        margin-top: 10px;
+        background-color: var(--color2);
+        width: 19.6rem;
+        border-radius: 2px;
+        border: 3px solid var(--color4);
+        color: black;
+        text-align: center;
+        text-decoration: none;
+        padding: .2rem;
+        transition: all .2s ease;
+    }
+    a:hover{
+        background-color: var(--color1);
+        border: 3px solid var(--color3);
+    }

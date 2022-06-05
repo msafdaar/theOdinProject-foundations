@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketchpad - malta khan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id = settingsContainer>
+            <h1 id = "heading">Sketchpad <a target="_blank" href="https://malta-khan.github.io/"> ../malta-khan</a></h1>
+            <h3>Pen</h3>
+            <div class="settingSection">
+                <div>
+                    <input type="radio" name = "penColor" id = "penColorEraser" > <label for="penColorEraser">Eraser</label>
+                </div>
+                <div>
+                    <input type="radio" name = "penColor" id = "penColorRainbow" checked > <label for="penColorRainbow">Rainbow</label>
+                </div> 
+            </div>
+            <h3>Grid</h3>
+            <div class="settingSection">
+                <div>
+                    <input type="radio" name = "gridColor" id = "gridColorDefault" checked> <label for="gridColorDefault">Default</label>
+                </div>
+                <div>
+                    <input type="radio" name = "gridColor" id = "gridColorInvisible"> <label for="gridColorInvisible">Hidden</label>
+                </div>
+            </div>
+            <h3>Drawing Mode</h3>
+            <div class="settingSection">
+                <div>
+                    <input type="radio" name = "drawingMode" id = "drawingModeHover" > <label for="drawingModeHover">Mouse Hover</label>
+                </div>
+                <div>
+                    <input type="radio" name = "drawingMode" id = "drawingModeClick" checked> <label for="drawingModeClick">Click/Touch</label>                    
+                </div>
+            </div>
+            <h3>Custom Colors</h3>
+            <div class="settingSection">
+                <div>
+                    <input type="radio" name = "penColor" id = "penColorCustom" > <label for="penColorCustom">Pen Color</label>
+                    <input type="color" name="penColor" id="penColorCustomSelector" value="#39b54a">
+                </div>
+                <div>
+                    <input type="radio" name = "gridColor" id = "gridColorCustom" > <label for="gridColorCustom">Grid Color</label>
+                    <input type="color" name="gridColor" id="gridColorCustomSelector" value="#00aeef">
+                </div>
+                <div> 
+                    <label for="newBgColor">Background</label> <input type="color" value="#ffffff" id="newBgColor">
+                </div>
+            </div>
+            <h3>New Drawing</h3>
+            <div class="settingSection">
+                <div> <input id = "newSize" type="number" value="24" min ="1"> <button id = "changeSize">Change Grid Size</button></div>
+                <button id="clearCanvas">Clear Board</button>
+            </div>
+    </div>
+    <div id = "canvas" draggable="false">
+    </div>
+<script src="script.js"></script>
+</body>
+</html>

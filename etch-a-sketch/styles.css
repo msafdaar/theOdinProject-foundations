@@ -1,0 +1,65 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+body, html{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    background-color: rgb(247, 184, 247);
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+
+}
+    #canvas{
+        outline: 3px solid #965b96;
+        display: grid;
+        height: 95vw;
+        width: 95vw;
+        max-width: 80vh;
+        max-height: 80vh;
+        padding:0;
+    }
+
+    #settingsContainer{
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+    }
+
+    h3{
+        margin: 0;
+        font-weight: 300;
+    }
+
+    .settingSection{
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.15);
+        margin-bottom: 30px;
+        border-radius: 5px;
+        padding: 40px 20px 20px 20px;
+        margin-top: -30px;
+        margin-left: -10px;
+    }
+
+    label,input,button{
+        margin: 7px 0px;
+        font-size: 22px;
+    }
+
+    a{
+        color: #0000007a;
+        font-weight: 100;
+        text-decoration: none;
+    }
+
+    #newSize{
+        width: 100px;
+    }
+    #clearCanvas{
+        width: 295px;
+    }
