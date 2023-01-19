@@ -1,72 +1,153 @@
-html,body{
-    background-color: #002e3f;
-    font-size: 1vmin;
-    color: white;
-    font-family: Tahoma, Geneva, Verdana, sans-serif;
-}
-#title{
-    font-size: 10rem;
-    line-height: 10rem;
-    margin-bottom: 0;
-}
-.choiceButton{
-    display: inline-block;
-    font-size: 8rem;
-    border-radius: 1.5rem;
-    border: 5px solid #00adec;
-    width: 10rem;
-    text-align: center;
-    margin-right: 1.5rem;
-  
-}
-.choiceButton:hover{
-    background-color: tomato;
-    border-color: tomato;
-}
-#description{
-    font-size: 3rem;
-    padding: .5rem 2rem;
-    background-color: #00adec;
-    width: fit-content;
-    border-radius: 2rem;
-    margin-top: 4rem;
-    margin-bottom: 2rem;
-}
-#scoreBoardContainer>h2{
-    font-size: 3rem;
-}
-#scores{
-    order: 1;
-    display: flex;
-    background-color: #00adec;
-    width: 100%;
-    justify-content: space-around;
-    font-size: 2rem;
-}
-#history{
-    margin:0;
-    border-radius: 0px 0px 5px 5px;
-    border: 5px solid #00adec;
-    width: 20vw;
-    display: flex;
-    flex-direction: column;
-    height: 50vh;
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
-#history>p{
-    color: black;
-    margin-left: 1rem;
-    font-size: 1.7rem;
-    transition: all .6s ease;
+body.dark{
+    color: rgb(240, 240, 240);
+    background-color: rgb(49, 49, 49);
+    --secondry-color: rgb(102, 102, 102);
+    --player-color:  rgb(141, 199, 167);
+    --computer-color: rgb(209, 124, 194);
 }
 body{
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
     align-items: center;
+    margin-top: 30px;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+
+    color: black;
+    background-color: rgb(245, 245, 245);
+    --secondry-color: rgb(160, 160, 160);
+    --player-color:  rgb(0, 117, 53);
+    --computer-color: rgb(139, 12, 118);
 }
 
-.hidden{
-    display: none;
-    visibility: hidden;
+
+body > h1{
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body > div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#makeChoiceContainer{
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#makeChoiceContainer .buttons{
+display: flex; 
+
+}
+
+.buttons button{
+    width: 30%;
+    height: 40px;
+}
+
+.emoji{
+    filter: saturate(0);
+    opacity: .8;
+}
+
+.scoreBoard{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+h2{
+    margin: 15px 0;
+    font-weight:600;
+}
+.score > div{
+    display: flex;
+    flex-direction: row;
+}
+
+.score > div > div{
+    width: 50%;
+    padding: 5px 7px;
+    border: 1px solid var(--secondry-color);
+}
+
+.score > div div+div {
+    border-left-width: 0px;
+}
+
+.score div+div > div{
+    border-top-width: 0px;
+}
+
+#history{
+    border: 1px solid var(--secondry-color);
+    height: 300px;
+    padding: 5px 7px;
+    overflow-y: scroll;
+}
+
+#history p{
+    margin: 7px 0;
+    animation: fade-in 250ms;
+
+}
+.user{
+    color: var(--player-color);
+}
+
+.computer{
+    color: var(--computer-color);
+}
+
+.playAgain{
+    height: 40px;
+}
+@keyframes fade-in {
+    from{
+        opacity: 0;
+        transform: scale(.5);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+
+    }
+}
+
+.switchDarkMode{
+    width: 90px;
+    height: 30px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+body .switchDarkMode::before{
+    content: "Dark 🌙";
+    filter: saturate(0);
+}
+
+body.dark .switchDarkMode::before{
+    content: "Light ☀";
+    filter: saturate(0);
+
+}
+
+.credits{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    
+}
+
+a, a:visited, a:link{
+    color: rgb(192, 93, 0);
 }

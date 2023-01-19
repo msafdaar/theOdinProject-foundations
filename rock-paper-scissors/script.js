@@ -1,50 +1,45 @@
 function announceResult(round,result,userChoice,computerChoice){
     let message = document.createElement('p');
     if (result == 'tie'){
-        message.textContent = `Round #${round}> Both choosed ${userChoice}. No one wins`
+        message.textContent = `Round #${round}> Tie, Both choosed ${userChoice}.`
     }
     if (result == 'yWin'){
-        message.textContent = `Round #${round}> You choosed ${userChoice} and computer choosed ${computerChoice}. You win this round. `
+        message.classList.add("user")
+        message.textContent = `Round #${round}> Your score +1, You choosed ${userChoice} and computer choosed ${computerChoice}.`
         document.getElementById('userScore').textContent = +document.getElementById('userScore').textContent+1;
         }
     if (result == 'cWin'){
-        message.textContent = `Round #${round}> You choosed ${userChoice} and computer choosed ${computerChoice}. Computer wins this round.`
+        message.classList.add("computer")
+        message.textContent = `Round #${round}> Computer score +1, You choosed ${userChoice} and computer choosed ${computerChoice}.`
         document.getElementById('compScore').textContent = +document.getElementById('compScore').textContent+1;
     }
-    let targetbox = document.querySelector("#history");
-    targetbox.insertBefore(message, targetbox.firstChild);
-    //for animation
-    setTimeout(function(){
-        message.style.color= 'white';
-    }, 100)
-    
+
+    let history = document.querySelector("#history");
+    history.appendChild(message);
+    history.scrollTop = history.scrollHeight;
+
     //For Ending game if somone reaches score 5
     let compScore = +(document.getElementById('compScore').textContent);
     let userScore = +(document.getElementById('userScore').textContent); 
     let finalLocation = document.querySelector("#makeChoiceContainer");
     if (userScore >= 5 || compScore >= 5 ){
 
-        let finalMessage = document.createElement('div');
+        let finalMessage = document.createElement('h2');
         if (compScore>userScore){
-            finalMessage.textContent = `Game over. The Computer Won. Hit F5 to play again.`;
+            finalMessage.textContent = `Game over. Computer Won.`;
         }
         else {
-            finalMessage.textContent = `Game over. You Won. Hit F5 to play again.`;
+            finalMessage.textContent = `Game over. You Won.`;
         }
-        finalMessage.style.cssText = "width: 30vw; font-size: 3rem; margin-top: 1rem; background-color:#00adec; padding:15px 10px; border-radius: 10px;"
+        finalMessage.classList.add("finalMessage")
+        let playAgain = document.createElement("button");
+        playAgain.textContent = "Play again";
+        playAgain.classList.add("playAgain");
+        playAgain.onclick = ()=>{location.reload()}
+
+        finalLocation.innerHTML = "";
         finalLocation.appendChild(finalMessage);
-        
-        //remove the event listners and buttons
-        const buttons = document.querySelectorAll(".choiceButton")
-        buttons.forEach(button => {
-        button.removeEventListener('click', playRound)
-        button.classList.add('hidden')});
-        document.querySelector("#description").classList.add('hidden');
-        
-        //for animation
-        setTimeout(function(){
-            finalMessage.style.color= 'white';
-        }, 100);
+        setTimeout(()=>{finalLocation.appendChild(playAgain)}, 500);
     
     }
     
@@ -70,7 +65,7 @@ function computerChoiceFunction(){
     if (choice == 2 ) {return "Sccissors";}
 }
 function playRound(e){
-    let userChoice = e.target.getAttribute('data-choice');
+    let userChoice = e.currentTarget.getAttribute('data-choice');
     let computerChoice = computerChoiceFunction();
     let result = calculateResult(userChoice,computerChoice);
     announceResult(round,result,userChoice,computerChoice);
@@ -82,3 +77,7 @@ const buttons = document.querySelectorAll(".choiceButton")
 buttons.forEach(button => {
 button.addEventListener('click', playRound)     
 });
+
+document.querySelector(".switchDarkMode").onclick = ()=>{
+    document.body.classList.toggle("dark");
+}

@@ -1,24 +1,48 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
 <title>
-    Rock Paper and Sccissors
+    Rock, Paper, Sccissors
 </title>
 </head>
 <body>
-<div id="makeChoiceContainer">
-    <h1 id="title">Rock<br>Paper<br>Sccissors</h1> 
-    <h2 id="description">Click your choice to play round</h2>     
-    <div class="choiceButton" data-choice = "Rock">R</div>
-    <div class="choiceButton" data-choice = "Paper">P</div>
-    <div class="choiceButton" data-choice = "Sccissors">S</div>
-</div>
-<div id="scoreBoardContainer">
-    <h2>The Scoreboard</h2>
-    <div id= "scores"><P>You: <span id = "userScore">0</span></P> <P>Computer: <span id="compScore">0</span></P></div>
-       <div id = "history">
+    <button class="switchDarkMode"></button>
+    <h1>Rock, Paper, Sccissors</h1>
+    <div>
+        <div id="makeChoiceContainer">
+            <h2>Use the buttons to play</h2>
+            <div class="buttons">
+                <button class="choiceButton" data-choice = "Rock"> <span class="emoji">✊</span> Rock</button>
+                <button class="choiceButton" data-choice = "Paper"><span class="emoji">🖐</span> Paper</button>
+                <button class="choiceButton" data-choice = "Sccissors"><span class="emoji">✌</span> Sccissors</button>        
+            </div>
+        </div>
+
+        <div class="scoreBoard">
+            <h2>Scoreboard</h2>
+            <div class="score">
+                <div class="user">
+                    <div>You</div>
+                    <div><span id = "userScore">0</span></div>
+                </div>
+                <div class="computer">
+                    <div>Computer</div>
+                    <div><span id="compScore">0</span></div>
+                </div>
+            </div>
+            <h2>History</h2>
+            <div id = "history">
+            </div>    
+        </div>
     </div>
-</div>
+    <div class="credits">
+        Coded by&nbsp; <a href="https://malta-khan.github.io/"> Malta Khan</a>
+    </div>
 <script src="script.js"></script>
 </body>
 </html>
