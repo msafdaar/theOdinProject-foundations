@@ -1,20 +1,3 @@
-body.dark{
-    color: rgb(212, 212, 212);
-    background-color: rgb(49, 49, 49);
-    --secondry-color: rgb(102, 102, 102);
-    --third-color: rgb(119, 119, 119);
-    --player-color:  rgb(141, 199, 167);
-    --computer-color: rgb(209, 124, 194);
-}
-body{
-    color: black;
-    background-color: rgb(245, 245, 245);
-    --secondry-color: rgb(160, 160, 160);
-    --third-color: rgb(236, 236, 236);
-    --player-color:  rgb(0, 117, 53);
-    --computer-color: rgb(139, 12, 118);
-}
-
 body{
     display: flex;
     flex-direction: column;
@@ -23,21 +6,43 @@ body{
     font-size: 16px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 100%;
+
+    color: black;
+    background-color: rgb(245, 245, 245);
+    --secondry-color: rgb(160, 160, 160);
+    --third-color: rgb(236, 236, 236);
+    --player-color:  rgb(0, 117, 53);
+    --computer-color: rgb(139, 12, 118);
+    --time: 500ms;
 }
 
+body.dark{
+    color: rgb(212, 212, 212);
+    background-color: rgb(49, 49, 49);
+    --secondry-color: rgb(102, 102, 102);
+    --third-color: rgb(119, 119, 119);
+    --player-color:  rgb(141, 199, 167);
+    --computer-color: rgb(209, 124, 194);
+}
 
-body > h1{
+.header, .main, .footer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header{
     font-size: 2rem;
     width: 100%;
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
 }
-
-body > div{
+h2{
+    margin: 25px 0 10px 0;
+    font-weight:600;
+    text-align: left;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 #makeChoiceContainer{
     width: 300px;
@@ -61,19 +66,13 @@ justify-content: space-between;
     opacity: .8;
 }
 
-.scoreBoard{
+.scoreAndHistory{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 300px;
 }
 
-h2{
-    margin: 25px 0 10px 0;
-    font-weight:600;
-    text-align: left;
-    width: 100%;
-}
 .score{
     width: 300px;
 }
@@ -103,13 +102,15 @@ h2{
     overflow-x: hidden;
     display: block;
 }
+
 td, th{
     border: 1px solid var(--secondry-color);
     text-align: left;
     padding: 5px 7px;
 }
+
 th:not(:first-child){
-    width: 80px;
+    width: 120px;
 }
 th{
     background-color: var(--third-color);
@@ -118,9 +119,6 @@ th{
     font-weight: 600;
 }
 
-td{
-    animation: fade-in 750ms;
-}
 .user{
     color: var(--player-color);
 }
@@ -161,7 +159,7 @@ body.dark .switchDarkMode::before{
 
 }
 
-.credits{
+.footer{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -171,4 +169,61 @@ body.dark .switchDarkMode::before{
 
 a, a:visited, a:link{
     color: rgb(192, 93, 0);
+}
+
+.userWin{
+    animation: userWin var(--time) ease-in forwards;
+}
+
+@keyframes userWin {
+    from{
+
+    }
+    to{
+        color: var(--player-color);
+        font-weight: 600;
+    }
+}
+.computerWin{
+    animation: computerWin var(--time) ease-in forwards;
+}
+
+@keyframes computerWin {
+    from{
+
+    }
+    to{
+        color: var(--computer-color);
+        font-weight: 600;
+    }
+}
+
+.userLose{
+    animation: userLose var(--time) ease-in forwards;
+}
+
+@keyframes userLose {
+    from{
+
+    }
+    to{
+        color: var(--secondry-color);
+        text-decoration: line-through;
+        text-decoration-color: var(--computer-color);
+    }
+}
+
+.computerLose{
+    animation: computerLose var(--time) ease-in forwards;
+}
+
+@keyframes computerLose {
+    from{
+
+    }
+    to{
+        color: var(--secondry-color);
+        text-decoration: line-through;
+        text-decoration-color: var(--player-color);
+    }
 }

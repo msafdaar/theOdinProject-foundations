@@ -25,7 +25,7 @@ function computerChoiceFunction(){
     let choice = Math.floor(Math.random() * 3);
     if (choice == 0 ) {return "Rock";}
     if (choice == 1 ) {return "Paper";}
-    if (choice == 2 ) {return "Sccissors";}
+    if (choice == 2 ) {return "Scissors";}
 }
 
 //Compare Choices and Decide Winner
@@ -33,7 +33,7 @@ function calculateResult(userChoice,computerChoice){
     switch(true){
         case userChoice == computerChoice:
         return "tie";
-        case (userChoice == "Rock" && computerChoice == "Sccissors") || (userChoice == "Paper" && computerChoice == "Rock") || (userChoice == "Sccissors" && computerChoice == "Paper"):
+        case (userChoice == "Rock" && computerChoice == "Scissors") || (userChoice == "Paper" && computerChoice == "Rock") || (userChoice == "Scissors" && computerChoice == "Paper"):
         return "yWin"
         default:
         return "cWin"
@@ -48,27 +48,24 @@ function announceResult(round,result,userChoice,computerChoice){
         <tr>
         <td>${round}</td>
         <td>${userChoice}</td>
-        <td>${userChoice}</td>
-        <td>Tie</td>
+        <td>${computerChoice}</td>
         </tr>`
     }
     if (result == 'yWin'){
         message.innerHTML = `
-        <tr>
+        <tr class="userWinRow">
         <td>${round}</td>
-        <td>${userChoice}</td>
-        <td>${computerChoice}</td>
-        <td class="user">You</td>
+        <td class="userWin">${userChoice}</td>
+        <td class="computerLose">${computerChoice}</td>
         </tr>`
         document.getElementById('userScore').textContent = +document.getElementById('userScore').textContent+1;
         }
     if (result == 'cWin'){
         message.innerHTML = `
-        <tr>
+        <tr class="computerWinRow">
         <td>${round}</td>
-        <td>${userChoice}</td>
-        <td>${computerChoice}</td>
-        <td class="computer">Computer</td>
+        <td class="userLose">${userChoice}</td>
+        <td class="computerWin">${computerChoice}</td>
         </tr>`
         document.getElementById('compScore').textContent = +document.getElementById('compScore').textContent+1;
     }
