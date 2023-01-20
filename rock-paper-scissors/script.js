@@ -1,27 +1,88 @@
+let round = 0;
+
+const buttons = document.querySelectorAll(".choiceButton")
+buttons.forEach(button => {
+button.addEventListener('click', playRound)     
+});
+
+document.querySelector(".switchDarkMode").onclick = ()=>{
+    document.body.classList.toggle("dark");
+}
+
+
+//main event handler
+function playRound(e){
+    round++;
+    let userChoice = e.currentTarget.getAttribute('data-choice');
+    let computerChoice = computerChoiceFunction();
+    let result = calculateResult(userChoice,computerChoice);
+    announceResult(round,result,userChoice,computerChoice);
+    checkGameOver()
+}
+
+//Make a choice for computer randomly.
+function computerChoiceFunction(){
+    let choice = Math.floor(Math.random() * 3);
+    if (choice == 0 ) {return "Rock";}
+    if (choice == 1 ) {return "Paper";}
+    if (choice == 2 ) {return "Sccissors";}
+}
+
+//Compare Choices and Decide Winner
+function calculateResult(userChoice,computerChoice){
+    switch(true){
+        case userChoice == computerChoice:
+        return "tie";
+        case (userChoice == "Rock" && computerChoice == "Sccissors") || (userChoice == "Paper" && computerChoice == "Rock") || (userChoice == "Sccissors" && computerChoice == "Paper"):
+        return "yWin"
+        default:
+        return "cWin"
+    }
+}
+
+//announce result in history div
 function announceResult(round,result,userChoice,computerChoice){
-    let message = document.createElement('p');
+    let message = document.createElement('tr');
     if (result == 'tie'){
-        message.textContent = `Round #${round}> Tie, Both choosed ${userChoice}.`
+        message.innerHTML = `
+        <tr>
+        <td>${round}</td>
+        <td>${userChoice}</td>
+        <td>${userChoice}</td>
+        <td>Tie</td>
+        </tr>`
     }
     if (result == 'yWin'){
-        message.classList.add("user")
-        message.textContent = `Round #${round}> Your score +1, You choosed ${userChoice} and computer choosed ${computerChoice}.`
+        message.innerHTML = `
+        <tr>
+        <td>${round}</td>
+        <td>${userChoice}</td>
+        <td>${computerChoice}</td>
+        <td class="user">You</td>
+        </tr>`
         document.getElementById('userScore').textContent = +document.getElementById('userScore').textContent+1;
         }
     if (result == 'cWin'){
-        message.classList.add("computer")
-        message.textContent = `Round #${round}> Computer score +1, You choosed ${userChoice} and computer choosed ${computerChoice}.`
+        message.innerHTML = `
+        <tr>
+        <td>${round}</td>
+        <td>${userChoice}</td>
+        <td>${computerChoice}</td>
+        <td class="computer">Computer</td>
+        </tr>`
         document.getElementById('compScore').textContent = +document.getElementById('compScore').textContent+1;
     }
 
     let history = document.querySelector("#history");
     history.appendChild(message);
     history.scrollTop = history.scrollHeight;
+}
 
-    //For Ending game if somone reaches score 5
+//End game if somone reaches score 5
+function checkGameOver(){
     let compScore = +(document.getElementById('compScore').textContent);
     let userScore = +(document.getElementById('userScore').textContent); 
-    let finalLocation = document.querySelector("#makeChoiceContainer");
+    let container = document.querySelector("#makeChoiceContainer");
     if (userScore >= 5 || compScore >= 5 ){
 
         let finalMessage = document.createElement('h2');
@@ -37,47 +98,9 @@ function announceResult(round,result,userChoice,computerChoice){
         playAgain.classList.add("playAgain");
         playAgain.onclick = ()=>{location.reload()}
 
-        finalLocation.innerHTML = "";
-        finalLocation.appendChild(finalMessage);
-        setTimeout(()=>{finalLocation.appendChild(playAgain)}, 500);
-    
-    }
-    
-}
-
-function calculateResult(userChoice,computerChoice){
-    //Compare Choices and Decide Winner
-    switch(true){
-        case userChoice == computerChoice:
-        return "tie";
-        case (userChoice == "Rock" && computerChoice == "Sccissors") || (userChoice == "Paper" && computerChoice == "Rock") || (userChoice == "Sccissors" && computerChoice == "Paper"):
-        return "yWin"
-        default:
-        return "cWin"
+        container.innerHTML = "";
+        container.appendChild(finalMessage);
+        setTimeout(()=>{container.appendChild(playAgain)}, 500);
     }
 }
 
-function computerChoiceFunction(){
-    //Make a choice for computer randomly.
-    let choice = Math.floor(Math.random() * 3);
-    if (choice == 0 ) {return "Rock";}
-    if (choice == 1 ) {return "Paper";}
-    if (choice == 2 ) {return "Sccissors";}
-}
-function playRound(e){
-    let userChoice = e.currentTarget.getAttribute('data-choice');
-    let computerChoice = computerChoiceFunction();
-    let result = calculateResult(userChoice,computerChoice);
-    announceResult(round,result,userChoice,computerChoice);
-    round++;
-}
-
-let round = 1;
-const buttons = document.querySelectorAll(".choiceButton")
-buttons.forEach(button => {
-button.addEventListener('click', playRound)     
-});
-
-document.querySelector(".switchDarkMode").onclick = ()=>{
-    document.body.classList.toggle("dark");
-}

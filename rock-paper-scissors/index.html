@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
-<title>
-    Rock, Paper, Sccissors
-</title>
+    <title>
+        Rock, Paper, Sccissors
+    </title>
 </head>
+
 <body>
     <button class="switchDarkMode"></button>
     <h1>Rock, Paper, Sccissors</h1>
@@ -17,9 +19,9 @@
         <div id="makeChoiceContainer">
             <h2>Use the buttons to play</h2>
             <div class="buttons">
-                <button class="choiceButton" data-choice = "Rock"> <span class="emoji">✊</span> Rock</button>
-                <button class="choiceButton" data-choice = "Paper"><span class="emoji">🖐</span> Paper</button>
-                <button class="choiceButton" data-choice = "Sccissors"><span class="emoji">✌</span> Sccissors</button>        
+                <button class="choiceButton" data-choice="Rock"> <span class="emoji">✊</span> Rock</button>
+                <button class="choiceButton" data-choice="Paper"><span class="emoji">🖐</span> Paper</button>
+                <button class="choiceButton" data-choice="Sccissors"><span class="emoji">✌</span> Sccissors</button>
             </div>
         </div>
 
@@ -28,7 +30,7 @@
             <div class="score">
                 <div class="user">
                     <div>You</div>
-                    <div><span id = "userScore">0</span></div>
+                    <div><span id="userScore">0</span></div>
                 </div>
                 <div class="computer">
                     <div>Computer</div>
@@ -36,13 +38,20 @@
                 </div>
             </div>
             <h2>History</h2>
-            <div id = "history">
-            </div>    
+            <table id="history">
+                <tr>
+                    <th>#</th>
+                    <th>You</th>
+                    <th>Computer</th>
+                    <th>Winner</th>
+                </tr>
+            </table>
         </div>
     </div>
     <div class="credits">
         Coded by&nbsp; <a href="https://malta-khan.github.io/"> Malta Khan</a>
     </div>
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
